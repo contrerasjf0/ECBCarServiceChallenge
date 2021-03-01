@@ -4,14 +4,14 @@ import ItemSection from '../ItemSection'
 import InfoSection from '../InfoSection';
 
 import { itemProps } from '../../types/service';
+import ServiceService from '../../services/ServiceService';
+
+const serviceService: ServiceService = new ServiceService();
 
 function Item({ data }: itemProps) {
+  const [dataItem, setDataItem] = useState(data);
   const [open, setOpen] = useState(false);
-
-  const handleInfoSectionClick = () => {
-    setOpen(!open);
-  };
-
+  
   let userData = data.user? 
     data.user : 
     {
@@ -19,19 +19,30 @@ function Item({ data }: itemProps) {
       phonenumber: '',
       email: ''
     };
+
+  const handleInfoSectionClick = () => {
+    setOpen(!open);
+  };
+  
+  const handleActiveChange = async () => {
+    const document = await serviceService.setStatus(dataItem.id);
+    setDataItem(document);
+  }
   
   return (
   <>
-    <ItemSection make={data.make} 
-      model={data.model} 
+    <ItemSection make={dataItem.make} 
+      model={dataItem.model} 
       userFullName={userData.fullName}
       handleInfoSectionClick={handleInfoSectionClick}
+      activeMaintenance={dataItem.maintenance}
+      handleActiveChange={handleActiveChange}
     />
-    <InfoSection description={data.description} 
-      image={data.image}
-      maintenance={data.maintenance}
+    <InfoSection description={dataItem.description} 
+      image={dataItem.image}
+      maintenance={dataItem.maintenance}
       user={userData}
-      km={data.km}
+      km={dataItem.km}
       open={open}
     />
   </>

@@ -1,3 +1,4 @@
+import { ChangeEvent } from 'react';
 import { userType } from './user';
 
 export type serviceType = {
@@ -16,7 +17,8 @@ export interface itemListProps {
 }
 
 export interface itemProps {
-    data: serviceType
+    data: serviceType,
+
 }
 
 export interface infoSectionProps {
@@ -32,5 +34,7 @@ export interface itemSectionProps {
   make: string,
   model: string,
   userFullName?: string,
-  handleInfoSectionClick: () => void
+  handleInfoSectionClick: () => void,
+  activeMaintenance: boolean | undefined,
+  handleActiveChange: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void
 }

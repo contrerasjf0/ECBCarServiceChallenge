@@ -11,16 +11,18 @@ import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import { itemSectionProps } from '../../types/service';
 
 
-function ItemSection({make, model, userFullName, handleInfoSectionClick}: itemSectionProps) {
+function ItemSection({make, model, userFullName, handleInfoSectionClick, activeMaintenance, handleActiveChange}: itemSectionProps) {
   return (
     <ListItem button onClick={handleInfoSectionClick}>
         <ListItemIcon>
-          <DirectionsCarIcon />
+          <DirectionsCarIcon className={(activeMaintenance)?'maintenanceHighlight' : ''}/>
         </ListItemIcon>
         <ListItemText primary={`${make} ${model} ${userFullName}`} />
         <ListItemSecondaryAction>
           <Switch
             edge="end"
+            checked={activeMaintenance}
+            onChange={handleActiveChange}
             inputProps={{ 'aria-labelledby': 'car-in-service' }}
           />
         </ListItemSecondaryAction>

@@ -6,7 +6,7 @@ import Item from '../Item';
 import { itemListProps } from '../../types/service';
 
 function ItemList(p: itemListProps) {
-  console.log(p)
+
   return (
     <List
       component='nav'

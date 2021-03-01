@@ -15,6 +15,11 @@ class ServiceService extends HttpClient{
     return this.instance.get<serviceType[]>('/'+this.entityName);
 
   }
+
+  setStatus(id:number){
+    return this.instance.put<serviceType>('/'+this.entityName+'/'+id+'/setStatus');
+  }
+
 }
 
 export default ServiceService;

@@ -17,12 +17,12 @@ function InfoSection({description, image, maintenance, user, km, open} : infoSec
     <Collapse in={open} timeout='auto' unmountOnExit>
         <List component='div' disablePadding>
           <ListItem>
-            <Grid container>
+            <Grid container spacing={2}>
                 <Grid item xs={6}>
                   FullName: { user.fullName}
                 </Grid>
                 <Grid item xs={6}>
-                  FullName: { user.phonenumber}
+                  Phone Number: { user.phonenumber}
                 </Grid>
                 <Grid item xs={6}>
                   Email: { user.email}
@@ -41,7 +41,7 @@ function InfoSection({description, image, maintenance, user, km, open} : infoSec
                   Km: { km }
                 </Grid>
                 <Grid item xs={6}>
-                  Maintenance: { maintenance ? <CheckCircleOutlineIcon /> : <RadioButtonUncheckedIcon /> }
+                  Maintenance: { maintenance ? <CheckCircleOutlineIcon className={(maintenance)? 'maintenanceHighlight' : ''}/> : <RadioButtonUncheckedIcon /> }
                 </Grid> 
             </Grid>
           </ListItem>
