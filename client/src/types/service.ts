@@ -22,6 +22,7 @@ export interface itemProps {
 }
 
 export interface infoSectionProps {
+  id: number,
   description: string,
   image: string,
   maintenance?: boolean,
@@ -37,4 +38,12 @@ export interface itemSectionProps {
   handleInfoSectionClick: () => void,
   activeMaintenance: boolean | undefined,
   handleActiveChange: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void
+}
+
+export interface editInputProps {
+  edit: boolean,
+  labText: string,
+  labelValue: string | undefined,
+  name: string,
+  onChange: (name: string, value: string | undefined) => void
 }

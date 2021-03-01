@@ -38,7 +38,9 @@ function Item({ data }: itemProps) {
       activeMaintenance={dataItem.maintenance}
       handleActiveChange={handleActiveChange}
     />
-    <InfoSection description={dataItem.description} 
+    <InfoSection 
+      id={dataItem.id}
+      description={dataItem.description} 
       image={dataItem.image}
       maintenance={dataItem.maintenance}
       user={userData}

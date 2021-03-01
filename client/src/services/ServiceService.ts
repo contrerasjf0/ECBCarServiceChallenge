@@ -1,6 +1,6 @@
-
 import HttpClient from './HttpClient';
 import { serviceType } from '../types/service';
+import { userType, responseUserType } from './../types/user';
 
 class ServiceService extends HttpClient{
   private entityName: string;
@@ -18,6 +18,10 @@ class ServiceService extends HttpClient{
 
   setStatus(id:number){
     return this.instance.put<serviceType>('/'+this.entityName+'/'+id+'/setStatus');
+  }
+
+  saveUserData(id:number, useData: userType){
+    return this.instance.put<responseUserType>('/'+this.entityName+'/'+id+'/saveUserData', useData);
   }
 
 }
