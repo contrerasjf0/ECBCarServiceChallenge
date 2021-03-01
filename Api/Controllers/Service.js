@@ -14,9 +14,7 @@ async function setStatus(req, res, next){
 
   const document = await service.setStatus(req.params.id);
 
-  res.status(200).json({
-    document
-  });
+  res.status(200).json(document);
 }
 
 async function saveUserData(req, res, next){
