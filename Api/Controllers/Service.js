@@ -5,9 +5,7 @@ async function services(req, res, next){
 
   const serviceList =  await service.getAll();
 
-  res.status(200).json({ 
-    data: serviceList
-  });
+  res.status(200).json(serviceList);
 }
 
 
@@ -17,7 +15,7 @@ async function setStatus(req, res, next){
   const document = await service.setStatus(req.params.id);
 
   res.status(200).json({
-    data: document
+    document
   });
 }
 
@@ -29,10 +27,8 @@ async function saveUserData(req, res, next){
   const userInfo = await service.saveUserData(serviceId, userData);
   
   res.status(200).json({
-    data: {
-      serviceId,
-      userInfo
-    }
+    serviceId,
+    userInfo
   });
 }
 
