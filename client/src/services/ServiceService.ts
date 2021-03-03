@@ -6,7 +6,7 @@ class ServiceService extends HttpClient{
   private entityName: string;
 
   public constructor() {
-    super('http://localhost:3001/api');
+    super(process.env.REACT_APP_API_DOMAIN);
     this.entityName = 'service';
   }
 
