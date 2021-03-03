@@ -15,8 +15,6 @@ async function connectDB () {
     console.error('Could not connect to db', mongoUrl, error);
     process.exit(1);
   }
-
-  return connection;
 }
 
 module.exports = connectDB;
