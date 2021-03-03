@@ -4,10 +4,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const connectDB = require('./Lib/db');
-const { getRoutes } = require('./Routes');
+const connectDB = require('../Lib/db');
+const { getRoutes } = require('../Routes');
 
-const { config } = require('./config');
+const { config } = require('../config');
 
 const app = express();
 
@@ -21,8 +21,12 @@ app.use('/api', getRoutes());
 
 connectDB();
 
-app.listen(config.server.port, () => {
-  console.log('The server is running on the port: ', config.server.port);
-});
+
+if (config.server.isDev) {
+  app.listen(config.server.port, () => {
+    console.log('The server is running on the port: ', config.server.port);
+  });
+}
+
 
 module.exports = app;
